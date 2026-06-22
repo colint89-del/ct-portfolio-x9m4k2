@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Colin Thompson – Sales Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sales portfolio for Colin Thompson, highlighting revenue growth, enterprise expansion, and operational improvements." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050c0f;
+      --panel: #0b1519;
+      --panel-soft: #0f1d22;
+      --line-soft: rgba(118,255,201,.14);
+      --text: #eaf7f2;
+      --muted: #9bb5ae;
+      --accent: #76ffc9;
+      --accent2: #31d2ff;
+      --accent3: #b7ff3c;
+      --radius-lg: 26px;
+      --radius-md: 20px;
+      --max-w: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(49,210,255,.16), transparent 48%),
+        radial-gradient(circle at 90% 0%, rgba(118,255,201,.16), transparent 52%),
+        linear-gradient(180deg, #020607 0%, #050c0f 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(118,255,201,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(118,255,201,.035) 1px, transparent 1px);
+      background-size: 46px 46px;
+      opacity: .7;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.6), transparent 92%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(calc(100% - 32px), var(--max-w));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(5,12,15,.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(118,255,201,.12);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(118,255,201,.22);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      background: radial-gradient(circle at 30% 0%, rgba(118,255,201,.28), rgba(49,210,255,.1));
+      font-size: 13px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav a:hover { color: var(--text); }
+
+    .nav-actions { position: relative; }
+
+    .nav-pill {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(118,255,201,.26);
+      background: rgba(7,16,19,.9);
+      color: var(--text);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .nav-menu {
+      position: absolute;
+      right: 0;
+      top: 118%;
+      min-width: 210px;
+      border-radius: 18px;
+      border: 1px solid rgba(118,255,201,.2);
+      background: rgba(5,12,15,.98);
+      box-shadow: 0 18px 48px rgba(0,0,0,.7);
+      padding: 10px;
+      display: grid;
+      gap: 4px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .15s ease;
+      z-index: 40;
+    }
+
+    .nav-menu a {
+      padding: 7px 9px;
+      border-radius: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-menu a:hover {
+      background: rgba(118,255,201,.12);
+      color: var(--text);
+    }
+
+    .nav-actions:hover .nav-menu {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 30px 0 10px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 0.9fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #0b1519 0%, #050c0f 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(118,255,201,.18);
+      box-shadow: 0 22px 70px rgba(0,0,0,.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main {
+      padding: 30px 30px 26px;
+      display: grid;
+      grid-template-rows: auto auto auto;
+      gap: 20px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 16px var(--accent);
+    }
+
+    h1, h2, h3 {
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -.03em;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 4.8vw, 4.4rem);
+      line-height: .98;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+
+    .lede {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .hero-signals {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .signal-card {
+      padding: 14px 14px 13px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(118,255,201,.18);
+      background: rgba(255,255,255,.01);
+    }
+
+    .signal-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .signal-title { font-weight: 600; margin-bottom: 4px; }
+    .signal-body {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(118,255,201,.32);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .btn.primary {
+      background: linear-gradient(90deg, rgba(118,255,201,.18), rgba(49,210,255,.15));
+      color: var(--text);
+    }
+
+    .btn.secondary { color: var(--muted); }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 18px;
+    }
+
+    .panel-pad { padding: 22px 22px 20px; }
+
+    .mini-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .headshot-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 2px;
+      margin-bottom: 12px;
+    }
+
+    .headshot-frame {
+      width: 260px;
+      height: 260px;
+      border-radius: 40px;
+      border: 1px solid rgba(118,255,201,.32);
+      background:
+        url("linkedin-headshot.png") center/cover no-repeat,
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.09), transparent 60%);
+      box-shadow: 0 22px 70px rgba(0,0,0,.8);
+      position: relative;
+      z-index: 3;
+    }
+
+    .metric-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .metric-box {
+      padding: 14px 14px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(118,255,201,.12);
+      background: rgba(255,255,255,.01);
+    }
+
+    .metric-number {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.9rem;
+      margin-bottom: 4px;
+    }
+
+    .metric-caption {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .pill-list {
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 9px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(118,255,201,.12);
+      font-size: 13px;
+      color: #d9f7ec;
+    }
+
+    /* Sections */
+
+    .section {
+      padding: 18px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-end;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+      margin: 0 0 4px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 60ch;
+      line-height: 1.7;
+    }
+
+    .industries,
+    .wins-grid,
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .industry-card,
+    .project-card,
+    .win-card {
+      padding: 20px 20px 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(118,255,201,.16);
+      background: linear-gradient(180deg, #0b1519 0%, #050c0f 100%);
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(118,255,201,.22);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .industry-card h3,
+    .project-card h3,
+    .win-card h3 {
+      font-size: 1.1rem;
+      margin: 4px 0 6px;
+    }
+
+    .industry-card p,
+    .project-card p,
+    .win-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 0 10px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(118,255,201,.16);
+      background: rgba(255,255,255,.02);
+      font-size: 12px;
+      color: #d8f7ec;
+    }
+
+    /* Skills section (2 columns x 4), pulled higher under hero */
+
+    .skills-section {
+      padding: 2px 0 10px;
+      display: flex;
+      justify-content: flex-start;
+      margin-top: -280px; /* moved further up (about 2x previous) */
+    }
+
+    .skills-card {
+      padding: 14px 20px 12px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(118,255,201,.16);
+      background: linear-gradient(135deg, #0b1519, #071015);
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 14px;
+      margin-top: 8px;
+    }
+
+    .skill-pill {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(118,255,201,.16);
+      background: rgba(255,255,255,.02);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* Representative Wins */
+
+    .win-visual {
+      width: 100%;
+      height: 280px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(118,255,201,.16);
+      background: #020607;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .win-visual img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Footer CTA */
+
+    .footer-cta {
+      margin: 24px 0 46px;
+      padding: 22px 22px 20px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(118,255,201,.18);
+      background: linear-gradient(135deg, #0b1519, #041015);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.6);
+    }
+
+    .footer-cta p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 1040px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-main {
+        padding: 24px 22px 20px;
+      }
+      .hero-side {
+        grid-template-columns: 1fr;
+      }
+      .industries,
+      .wins-grid,
+      .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .headshot-row { justify-content: center; }
+      .skills-section { margin-top: 0; } /* avoid overlap on smaller screens */
+    }
+
+    @media (max-width: 760px) {
+      .wrap {
+        width: min(calc(100% - 20px), var(--max-w));
+      }
+      .nav { display: none; }
+      .hero { padding-top: 22px; }
+      .hero-main { padding: 20px 18px 18px; }
+      .hero-signals { grid-template-columns: 1fr; }
+      .industries,
+      .wins-grid,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+      .footer-cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="logo">
+        <div class="logo-mark">CT</div>
+        <span>Colin Thompson / Sales Portfolio</span>
+      </div>
+      <nav class="nav">
+        <a href="#industries">Industries</a>
+        <a href="#wins">Wins</a>
+        <a href="#metrics">Metrics</a>
+        <a href="#projects">Projects</a>
+        <div class="nav-actions">
+          <button class="nav-pill">Portfolio Links ▾</button>
+          <div class="nav-menu">
+            <a href="https://drive.google.com/file/d/1kaWxBJl6bPDB0VlSJPBdYp4bzdnICTpC/view?usp=sharing" target="_blank" rel="noopener noreferrer">Meet my AI Clone Video</a>
+            <a href="https://www.linkedin.com/in/colint89" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:colint89@gmail.com">Email</a>
+            <a href="https://docs.google.com/document/d/1q3yW6VLGcIHpPummWJbl53ExLdxZO89eR-d8WKp6iLU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+            <a href="https://www.linkedin.com/in/colint89" target="_blank" rel="noopener noreferrer">Contact Me</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-grid">
+        <article class="card hero-main">
+          <div>
+            <div class="eyebrow">Revenue / Relationships / Systems</div>
+            <h1>Sales Portfolio</h1>
+            <p class="lede">
+              I build revenue by combining disciplined sales execution, data‑driven strategy, and strong relationship capital. My background spans beverage distribution, real estate marketing technology, team leadership, enterprise account growth, and process optimization.
+            </p>
+          </div>
+
+          <div class="hero-signals">
+            <div class="signal-card">
+              <div class="signal-label">Leadership signal</div>
+              <div class="signal-title">~$10M Annual Revenue</div>
+              <div class="signal-body">
+                Helped lead a sales organization responsible for roughly ten million in annual revenue as VP of Sales.
+              </div>
+            </div>
+            <div class="signal-card">
+              <div class="signal-label">Career signal</div>
+              <div class="signal-title">Doubled Territory Revenue</div>
+              <div class="signal-body">
+                Grew a previously underdeveloped beverage territory and earned Salesman of the Year recognition.
+              </div>
+            </div>
+            <div class="signal-card">
+              <div class="signal-label">Quota signal</div>
+              <div class="signal-title">125% of Quota</div>
+              <div class="signal-body">
+                Consistently exceeded quota as an account executive while owning recurring revenue and subscription targets.
+              </div>
+            </div>
+            <div class="signal-card">
+              <div class="signal-label">Optimization signal</div>
+              <div class="signal-title">Drop‑Offs Cut by 10 Pts</div>
+              <div class="signal-body">
+                Improved client onboarding flow and activation speed to protect revenue and improve the customer experience.
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#wins">View Representative Wins</a>
+            <a class="btn secondary" href="#industries">Industry Experience</a>
+          </div>
+        </article>
+
+        <div class="hero-side" id="metrics">
+          <article class="card panel-pad">
+            <div class="headshot-row">
+              <div class="headshot-frame"></div>
+            </div>
+            <small class="mini-label">Core metrics</small>
+            <div class="metric-stack">
+              <div class="metric-box">
+                <div class="metric-number">$100K+</div>
+                <div class="metric-caption">
+                  Monthly ARR target handled in an account‑executive role, paired with approximately 300 annual subscription signups.
+                </div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-number">40%</div>
+                <div class="metric-caption">
+                  Increase in preferred‑vendor and exclusive enterprise relationships through executive access and packaging changes.
+                </div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-number">30%</div>
+                <div class="metric-caption">
+                  Share of new business in expansion territories coming from inbound and partner‑driven channels within a year.
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card panel-pad">
+            <small class="mini-label">Positioning</small>
+            <div class="pill-list">
+              <div class="pill">Adapt quickly across industries</div>
+              <div class="pill">Build strategic relationships</div>
+              <div class="pill">Turn complexity into execution</div>
+              <div class="pill">Lead teams while staying hands‑on</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills (2 columns x 4, same width as hero main, pulled higher) -->
+    <section class="section skills-section">
+      <article class="skills-card">
+        <small class="mini-label">Skills</small>
+        <div class="skills-grid">
+          <div class="skill-pill">SaaS Solution Sales</div>
+          <div class="skill-pill">Enterprise Account Growth</div>
+          <div class="skill-pill">Executive Relationship Building</div>
+          <div class="skill-pill">Territory &amp; Market Expansion</div>
+          <div class="skill-pill">Pipeline &amp; Forecast Ownership</div>
+          <div class="skill-pill">Cross‑Functional Collaboration</div>
+          <div class="skill-pill">Data‑Driven Storytelling</div>
+          <div class="skill-pill">Process &amp; Workflow Optimization</div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Industry Experience -->
+    <section id="industries" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Industry Experience</h2>
+          <p>
+            The roles below show how I have built revenue, relationships, and systems in different industries while keeping a consistent focus on execution and measurable outcomes.
+          </p>
+        </div>
+      </div>
+
+      <div class="industries">
+        <article class="industry-card">
+          <span class="tag">Beverage Distribution</span>
+          <h3>Outside Sales in Wine &amp; Spirits</h3>
+          <p>
+            Developed commercial accounts across a competitive territory, built deep relationships with buyers, and turned an underperforming area into a strong producer through disciplined field work.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Doubled territory revenue</span>
+            <span class="chip">Salesman of the Year</span>
+            <span class="chip">Field &amp; relationship selling</span>
+          </div>
+        </article>
+
+        <article class="industry-card">
+          <span class="tag">Real Estate Marketing Tech</span>
+          <h3>Data‑Driven Sales &amp; Leadership</h3>
+          <p>
+            Sold subscription marketing solutions to real estate professionals, advanced into sales leadership, and supported nationwide growth by pairing data, onboarding, and disciplined pipeline management.
+          </p>
+          <div class="chip-row">
+            <span class="chip">$100K+ monthly ARR target</span>
+            <span class="chip">~300 annual signups</span>
+            <span class="chip">~$10M team revenue</span>
+          </div>
+        </article>
+
+        <article class="industry-card">
+          <span class="tag">Military Background</span>
+          <h3>Leadership Under Pressure</h3>
+          <p>
+            Led a team, managed high‑value equipment, and learned how to stay steady when expectations and stakes were high, carrying those habits into sales and leadership roles.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Team leadership</span>
+            <span class="chip">Accountability &amp; discipline</span>
+            <span class="chip">Operational mindset</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Representative Wins -->
+    <section id="wins" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Representative Wins</h2>
+          <p>
+            Three examples that highlight how I expand accounts, build new channels, and improve processes to protect and grow revenue.
+          </p>
+        </div>
+      </div>
+
+      <div class="wins-grid">
+        <article class="win-card">
+          <div class="win-visual">
+            <img src="enterprise-expansion.png" alt="Enterprise expansion visualization" />
+          </div>
+          <h3>Enterprise Expansion Across Multiple Offices</h3>
+          <p>
+            Built trust with industry‑leading real estate brokerages by leading with market‑data‑informed hypotheses, gaining executive access, and delivering firm‑level presentations. Relationships expanded into multiple enterprises, securing strategic partnerships and generating multiple six‑figure annual contracts while partnering cross‑functionally.
+          </p>
+        </article>
+
+        <article class="win-card">
+          <div class="win-visual">
+            <img src="national-expansion.png" alt="National channel expansion visualization" />
+          </div>
+          <h3>National Channel Expansion</h3>
+          <p>
+            Helped open new states and built partner‑driven growth channels by securing MLS data agreements and launching inbound and affiliate motions. Within a year, ~30% of new business in those expansion territories came from these non‑field channels.
+          </p>
+        </article>
+
+        <article class="win-card">
+          <div class="win-visual">
+            <img src="operational-improvement-with-revenue-impact.png" alt="Operational improvement and revenue impact visualization" />
+          </div>
+          <h3>Operational Improvement With Revenue Impact</h3>
+          <p>
+            Streamlined onboarding and reduced friction between teams while working with our proprietary SaaS platform to help real estate brokerages recruit and activate agents. By pairing workflow changes with product demonstrations built around an ARR model, I improved activation speed, cut drop‑offs by roughly 10 points, and protected more than $100K in revenue through better workflows.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects / Interests -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Projects &amp; Interests</h2>
+          <p>
+            A few themes that show how I like to work and where I tend to invest energy outside of day‑to‑day quota responsibility.
+          </p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <article class="project-card">
+          <span class="tag">Continuous Improvement</span>
+          <h3>Systems &amp; Workflow Optimization</h3>
+          <p>
+            I look for ways to simplify and improve how work gets done, whether that is tightening onboarding, clarifying handoffs, or refining reporting so leaders can make faster decisions.
+          </p>
+          <ul>
+            <li>Mapping current state vs. desired state</li>
+            <li>Reducing friction between teams</li>
+            <li>Protecting revenue through better process</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <span class="tag">Sales Craft</span>
+          <h3>Messaging, Story &amp; Discovery</h3>
+          <p>
+            I invest time in sharpening questions, visual aids, and stories so conversations with prospects and partners feel clear, relevant, and tied directly to business outcomes.
+          </p>
+          <ul>
+            <li>Tailored discovery frameworks</li>
+            <li>Simple visual explanations</li>
+            <li>Executive‑level positioning</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <span class="tag">Coming Soon</span>
+          <h3>Future Portfolio Build</h3>
+          <p>
+            Reserved for a future project such as a sales dashboard, outbound framework, AI‑assisted workflow, or case‑study microsite.
+          </p>
+          <ul>
+            <li>Project name</li>
+            <li>Tools or stack used</li>
+            <li>Outcome or measurable impact</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section id="contact" class="section">
+      <article class="footer-cta">
+        <div>
+          <h2>Built for modern sales teams</h2>
+          <p>
+            I’m most effective in environments where accountability, communication, and measurable progress matter. This portfolio is designed to give a recruiter or hiring manager a clear view of how I think, how I sell, and how I create value.
+          </p>
+        </div>
+        <div class="footer-actions">
+          <a class="btn primary" href="https://drive.google.com/file/d/1kaWxBJl6bPDB0VlSJPBdYp4bzdnICTpC/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+            Meet my AI Clone Video
+          </a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/colint89" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+          <a class="btn secondary" href="mailto:colint89@gmail.com">
+            Email
+          </a>
+          <a class="btn secondary" href="https://docs.google.com/document/d/1q3yW6VLGcIHpPummWJbl53ExLdxZO89eR-d8WKp6iLU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+            Resume
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+</body>
+</html>
